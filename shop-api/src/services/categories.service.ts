@@ -1,19 +1,18 @@
-import {Request, Response} from 'express';
+import {getDbInstance} from "../../db/db";
+
 
 export interface Category {
+    categoryId: string,
     name: string;
 }
 
-
-export const getCategories = (request: Request, response: Response) => {
-    const categories: Category[] = [
-        {
-            name: 'Food'
-        },
-        {
-            name: 'Cleaning Products'
-        }
-    ]
-
-    response.status(200).json(categories);
+export class CategoriesService {
+    static async getAllCategories() {
+        return (await getDbInstance().collection('categories').find({}).toArray()).map(value => {
+            return {
+                categoryId: value.categoryId,
+                name: value.name
+            }
+        });
+    }
 }
