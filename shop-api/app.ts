@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import express from 'express';
-import {port} from "./src/configs/app.config";
+import {port} from "./config/app.config";
 import {getProducts} from "./src/controllers/products.controller";
 import {getCategories} from "./src/controllers/categories.controller";
 import {db_init} from "./db/db";
