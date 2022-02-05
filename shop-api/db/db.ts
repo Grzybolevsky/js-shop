@@ -1,11 +1,11 @@
 import {ListDatabasesResult, MongoClient} from 'mongodb';
 import {readFile} from './file_reader';
-import {mongoUri} from '../config/app.config';
+import {MONGODB_URI} from '../config/app.config';
 
 
 const initialStorageLocation = './initial_storage/';
 const collectionFiles = ['categories.json', 'products.json'];
-const client = new MongoClient(mongoUri);
+const client = new MongoClient(MONGODB_URI);
 
 async function resetMongo(client: MongoClient) {
     // console.log('DROPPING DATABASES');
@@ -54,7 +54,7 @@ export async function db_init() {
         await createIndices(client);
         // await listDatabases(client);
     } catch (e) {
-        console.log("Cannot connect to DB on uri:" + mongoUri);
+        console.log("Cannot connect to DB on uri:" + MONGODB_URI);
         console.log("Ensure that mongoDB instance is running on uri above and restart app.");
         // console.error(e);
     }
