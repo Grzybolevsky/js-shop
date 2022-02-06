@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 
 import express from 'express';
-import {port} from "./src/configs/app.config";
-import {getProducts} from "./src/services/products.service";
-import {getCategories} from "./src/services/categories.service";
+import {APP_PORT} from "./config/app.config";
+import {getProducts} from "./src/controllers/products.controller";
+import {getCategories} from "./src/controllers/categories.controller";
+import {db_init} from "./db/db";
 
 
 const app = express();
 
 
-app.listen(port, () => {
-    console.log(`shop-api is running on port ${port}.`);
+db_init().catch(console.error);
+
+app.listen(APP_PORT, () => {
+    console.log(`shop-api is running on port ${APP_PORT}.`);
 });
 
 app.get('/products', getProducts);
 app.get('/categories', getCategories);
+//app.get('/', )

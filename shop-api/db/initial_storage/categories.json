@@ -1,0 +1,13 @@
+{
+  "collection": "categories",
+  "values": [
+    {
+      "categoryId": "food",
+      "name": "Food"
+    },
+    {
+      "categoryId": "cleaningProducts",
+      "name": "Cleaning Products"
+    }
+  ]
+}

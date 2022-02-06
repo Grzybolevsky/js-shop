@@ -1,0 +1,23 @@
+{
+  "collection": "products",
+  "values": [
+    {
+      "productId": "bread",
+      "name": "Bread",
+      "price": 4,
+      "category": "food"
+    },
+    {
+      "productId": "butter",
+      "name": "Butter",
+      "price": 7,
+      "category": "food"
+    },
+    {
+      "productId": "soap",
+      "name": "Soap",
+      "price": 3,
+      "category": "cleaningProducts"
+    }
+  ]
+}

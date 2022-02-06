@@ -1,0 +1,27 @@
+version: "3"
+services:
+  shop-api:
+    container_name: shop-api
+    image: grzybolevsky/shop-api
+    restart: always
+    build: ./shop-api
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+  shop-ui:
+    container_name: shop-ui
+    image: grzybolevsky/shop-ui
+    restart: always
+    build: ./shop-ui
+    ports:
+      - "3000:3000"
+    links:
+      - shop-api
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
