@@ -3,18 +3,15 @@ import {
     createPayment,
     deletePayment,
     getAllPayments,
-    getPaymentById,
-    updatePayment
+    getPaymentsBy
 } from "../controllers/payments.controller";
 
 export const paymentsRouter = express.Router();
 
 paymentsRouter.get('/', getAllPayments);
 
-paymentsRouter.get('/:id', getPaymentById);
+paymentsRouter.get('/:name', getPaymentsBy);
 
 paymentsRouter.post('/', createPayment);
 
-paymentsRouter.put('/:id', updatePayment);
-
-paymentsRouter.delete('/:id', deletePayment);
+paymentsRouter.delete('/:name', deletePayment);

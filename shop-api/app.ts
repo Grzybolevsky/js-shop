@@ -4,9 +4,9 @@ import express from 'express';
 import cors from 'cors';
 import {APP_PORT} from "./config/app.config";
 import {db_init} from "./db/db";
-import {categoriesRouter} from "./src/routes/categories.routes";
-import {productsRouter} from "./src/routes/products.routes";
-import {paymentsRouter} from "./src/routes/payments.routes";
+import {categoriesRouter} from "./src/routes/categories.route";
+import {productsRouter} from "./src/routes/products.route";
+import {paymentsRouter} from "./src/routes/payments.route";
 
 
 const app = express();
