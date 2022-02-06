@@ -1,10 +1,21 @@
 import {ListDatabasesResult, MongoClient} from 'mongodb';
 import {readFile} from './file_reader';
 import {MONGODB_URI} from '../config/app.config';
+import {connect, connection} from "mongoose";
 
 
 const initialStorageLocation = './initial_storage/';
 const collectionFiles = ['categories.json', 'products.json'];
+
+connect(MONGODB_URI, {dbName: 'shop'}, () => {
+    console.log('Connected to DB on' + MONGODB_URI);
+});
+
+const dbConnection = connection;
+
+dbConnection.on('error', (err) => {
+    console.log('DB error:' + err);
+})
 const client = new MongoClient(MONGODB_URI);
 
 async function resetMongo(client: MongoClient) {

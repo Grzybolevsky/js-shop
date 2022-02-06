@@ -1,12 +1,4 @@
 import {getDbInstance} from "../../db/db";
-import {Category} from "./categories.service";
-
-export interface Product {
-    productId: string,
-    name: string,
-    price: number,
-    category: Category
-}
 
 export class ProductsService {
     static async getAllProducts() {
@@ -15,7 +7,8 @@ export class ProductsService {
                 productId: value.productId,
                 name: value.name,
                 price: value.price,
-                category: value.category
+                category: value.category,
+                imageUrl: value.imageUrl
             }
         });
     }

@@ -1,10 +1,6 @@
 import {getDbInstance} from "../../db/db";
 
 
-export interface Category {
-    categoryId: string,
-    name: string;
-}
 
 export class CategoriesService {
     static async getAllCategories() {
