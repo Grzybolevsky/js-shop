@@ -1,8 +1,9 @@
 import {Request, Response} from 'express';
-import {Category, CategoryModel} from "../models/category.model";
+import {CategoryModel} from "../models/category.model";
 
 
 export const getAllCategories = async (request: Request, response: Response) => {
+    console.log("/categories/ GET" + request);
     try {
         const categories = await CategoryModel.find();
         response.status(200).json(categories);
@@ -12,6 +13,7 @@ export const getAllCategories = async (request: Request, response: Response) => 
 }
 
 export const getCategoryBy = async (request: Request, response: Response) => {
+    console.log("/categories/?name GET" + request.params['name']);
     try {
         const categories = await CategoryModel.find({
             name: request.params['name'],
@@ -23,7 +25,11 @@ export const getCategoryBy = async (request: Request, response: Response) => {
 }
 
 export const createCategory = async (request: Request, response: Response) => {
-    const categoryModel = new CategoryModel({name: request.body.name});
+    console.log("/categories/ POST" + request);
+
+    const categoryModel = new CategoryModel({
+        name: request.body.name
+    });
 
     try {
         const createdCategory = await categoryModel.save();
@@ -34,6 +40,7 @@ export const createCategory = async (request: Request, response: Response) => {
 }
 
 export const deleteCategory = async (request: Request, response: Response) => {
+    console.log("/categories/ DELETE" + request);
     try {
         await CategoryModel.remove({
             name: request.params['name'],

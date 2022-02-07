@@ -3,8 +3,9 @@ import {ProductModel} from "../models/product.model";
 
 
 export const getAllProducts = async (request: Request, response: Response) => {
+    console.log("/products/ GET" + request);
     try {
-        const product = await ProductModel.find();
+        const product = await ProductModel.find({});
         response.status(200).json(product);
     } catch (error) {
         response.status(500).json({message: error.message});
@@ -12,14 +13,11 @@ export const getAllProducts = async (request: Request, response: Response) => {
 };
 
 export const getProductBy = async (request: Request, response: Response) => {
-    const {
-        name, categoryName
-    } = request.params;
-
+    console.log("/products/:name GET" + request);
     try {
         const products = await ProductModel.find({
-            name: name,
-            category: {name: categoryName}
+            name: request.params['name'],
+            categoryName: request.params['categoryName']
         });
         response.status(200).json(products);
     } catch (error) {
@@ -28,11 +26,12 @@ export const getProductBy = async (request: Request, response: Response) => {
 };
 
 export const createProduct = async (request: Request, response: Response) => {
+    console.log("/products/:name POST" + request);
     const productModel = new ProductModel({
-        name: request.body.name,
-        price: request.body.price,
-        imageUrl: request.body.imageUrl,
-        category: {name: request.body.category.name}
+        name: request.body['name'],
+        price: request.body['price'],
+        imgUrl: request.body['imgUrl'],
+        categoryName: request.body['categoryName']
     });
 
     try {
@@ -44,6 +43,7 @@ export const createProduct = async (request: Request, response: Response) => {
 };
 
 export const deleteProduct = async (request: Request, response: Response) => {
+    console.log("/products/:name DELETE" + request);
     try {
         await ProductModel.remove({
             name: request.params['name'],

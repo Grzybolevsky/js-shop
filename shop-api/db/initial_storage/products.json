@@ -4,17 +4,20 @@
     {
       "name": "Bread",
       "price": 4,
-      "categoryName": "Food"
+      "categoryName": "Food",
+      "imgUrl": ""
     },
     {
       "name": "Butter",
       "price": 7,
-      "categoryName": "Food"
+      "categoryName": "Food",
+      "imgUrl": ""
     },
     {
       "name": "Soap",
       "price": 3,
-      "categoryName": "Cleaning Products"
+      "categoryName": "Cleaning Products",
+      "imgUrl": ""
     }
   ]
 }
